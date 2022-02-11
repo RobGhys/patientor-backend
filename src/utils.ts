@@ -1,40 +1,24 @@
-import { NewDiagnosis } from './types';
+import {NewDiagnosis, NewPatient} from './types';
 
 // Unknown --> don't yet need to define the type to match any type, but can first verify the type and then confirm the expected type
-type Fields = { latin: unknown, code: unknown, name: unknown };
+//type Fields = { latin: unknown, code: unknown, name: unknown };
 
-const toNewDiagnosis = ({ latin, code, name } : Fields): NewDiagnosis => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const toNewDiagnosis = (object: any): NewDiagnosis => {
     const newDiagnosis: NewDiagnosis = {
-        latin: parseLatin(latin),
-        code: parseCode(code),
-        name: parseName(name)
+        code: parseString(object.code),
+        name: parseString(object.name)
     };
 
     return newDiagnosis;
 };
 
-const parseCode = (code: unknown): string => {
-    if (!code || !isString(code)) {
+const parseString = (str: unknown): string => {
+    if (!str || !isString(str)) {
         throw new Error('Incorrect or missing code');
     }
 
-    return code;
-};
-
-const parseName = (name: unknown): string => {
-    if (!name || !isString(name)) {
-        throw new Error('Incorrect or missing code');
-    }
-
-    return name;
-};
-
-const parseLatin = (latin: unknown): string => {
-    if (!latin || !isString(latin)) {
-        throw new Error('Incorrect or missing code');
-    }
-
-    return latin;
+    return str;
 };
 
 // Need 2 forms of check to recognize a string created via '=' or via 'new String(...)'
@@ -42,7 +26,7 @@ const isString = (text: unknown): text is string => {
     return typeof text === 'string' || text instanceof String;
 };
 
-/*const isDate = (date: string): boolean => {
+const isDate = (date: string): boolean => {
     return Boolean(Date.parse(date));
 };
 
@@ -51,7 +35,19 @@ const parseDate = (date: unknown): string => {
         throw new Error('Incorrect or missing date: ' + date);
     }
     return date;
-};*/
+};
+
+export const toNewPatient = (object: any): NewPatient => {
+    const newPatient: NewPatient = {
+        name: parseString(object.name),
+        dateOfBirth: parseDate(object.dateOfBirth),
+        ssn: parseString(object.ssn),
+        gender: parseString(object.gender),
+        occupation: parseString(object.occupation)
+    };
+
+    return newPatient;
+};
 
 /****************************
  *          Exports         *

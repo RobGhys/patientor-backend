@@ -1,5 +1,5 @@
-import { Diagnosis } from "../src/types";
-import toNewDiagnosis from "../src/utils";
+import { Diagnosis } from '../src/types';
+import toNewDiagnosis from '../src/utils';
 
 const data = [
   {
@@ -102,7 +102,6 @@ const data = [
 ]
 
 const diagnoses: Diagnosis [] = data.map(obj => {
-  // @ts-ignore
   const object = toNewDiagnosis(obj) as Diagnosis;
   object.id = obj.id;
 

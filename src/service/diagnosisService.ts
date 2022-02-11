@@ -7,11 +7,10 @@ const getEntries = (): Array<Diagnosis> => {
 
 const getPlainEnglishDiagnoses = (): PlainEnglishDiagnosis[] => {
     // Specifically exclude the unwanted fields (comment in this case)
-    return diagnoses.map(({ id, code, name, latin }) => ({
+    return diagnoses.map(({ id, code, name}) => ({
         id,
         code,
         name,
-        latin,
     }));
 };
 

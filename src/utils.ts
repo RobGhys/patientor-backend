@@ -1,7 +1,4 @@
-import {NewDiagnosis, NewPatient} from './types';
-
-// Unknown --> don't yet need to define the type to match any type, but can first verify the type and then confirm the expected type
-//type Fields = { latin: unknown, code: unknown, name: unknown };
+import {Genre, NewDiagnosis, NewPatient} from './types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const toNewDiagnosis = (object: any): NewDiagnosis => {
@@ -11,6 +8,18 @@ export const toNewDiagnosis = (object: any): NewDiagnosis => {
     };
 
     return newDiagnosis;
+};
+
+export const toNewPatient = (object: any): NewPatient => {
+    const newPatient: NewPatient = {
+        name: parseString(object.name),
+        dateOfBirth: parseDate(object.dateOfBirth),
+        ssn: parseString(object.ssn),
+        gender: parseGenre(object.gender),
+        occupation: parseString(object.occupation)
+    };
+
+    return newPatient;
 };
 
 const parseString = (str: unknown): string => {
@@ -37,14 +46,14 @@ const parseDate = (date: unknown): string => {
     return date;
 };
 
-export const toNewPatient = (object: any): NewPatient => {
-    const newPatient: NewPatient = {
-        name: parseString(object.name),
-        dateOfBirth: parseDate(object.dateOfBirth),
-        ssn: parseString(object.ssn),
-        gender: parseString(object.gender),
-        occupation: parseString(object.occupation)
-    };
+const parseGenre = (genre: unknown): Genre => {
+    if (!genre || !isGenre(genre)) {
+        throw new Error('Incorrect or missing genre: ' + genre);
+    }
 
-    return newPatient;
-};
+    return genre;
+}
+
+const isGenre = (param: any): param is Genre => {
+    return Object.values(Genre).includes(param);
+}

@@ -1,3 +1,8 @@
+export enum Genre {
+    Man = 'man',
+    Woman = 'woman',
+}
+
 export interface Diagnosis {
     id: number;
     name: string;
@@ -10,7 +15,7 @@ export interface Patient {
     name: string;
     dateOfBirth: string;
     ssn: string;
-    gender: string;
+    gender: Genre;
     occupation: string;
 }
 export type PlainEnglishDiagnosis = Omit<Diagnosis, 'latin'>;

@@ -1,5 +1,5 @@
 import { Diagnosis } from '../src/types';
-import toNewDiagnosis from '../src/utils';
+import { toNewDiagnosis } from '../src/utils';
 
 const data = [
   {

@@ -3,13 +3,13 @@ import diagnosisService from "../service/diagnosisService";
 
 const router = express.Router();
 
-import toNewDiagnosis from '../utils';
+import {toNewDiagnosis} from '../utils';
 
 /************************
  *          GET         *
  ************************/
 router.get('/', (_req, res) => {
-    res.send(diagnosisService.getEntries());
+    res.send(diagnosisService.getDiagnoses());
 });
 
 router.get('/:id', (req, res) => {

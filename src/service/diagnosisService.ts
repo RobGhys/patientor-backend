@@ -33,7 +33,7 @@ const findById = (id: number): Diagnosis | undefined => {
 };
 
 export default {
-    getEntries,
+    getDiagnoses: getEntries,
     addDiagnosis,
     getPlainEnglishDiagnoses,
     findById

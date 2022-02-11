@@ -6,7 +6,7 @@ export interface Diagnosis {
 }
 
 export interface Patient {
-    id: string;
+    id: number;
     name: string;
     dateOfBirth: string;
     ssn: string;

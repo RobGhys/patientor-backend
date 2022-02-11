@@ -4,7 +4,7 @@ import {NewDiagnosis, NewPatient} from './types';
 //type Fields = { latin: unknown, code: unknown, name: unknown };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const toNewDiagnosis = (object: any): NewDiagnosis => {
+export const toNewDiagnosis = (object: any): NewDiagnosis => {
     const newDiagnosis: NewDiagnosis = {
         code: parseString(object.code),
         name: parseString(object.name)
@@ -48,8 +48,3 @@ export const toNewPatient = (object: any): NewPatient => {
 
     return newPatient;
 };
-
-/****************************
- *          Exports         *
- ****************************/
-export default toNewDiagnosis;

@@ -1,15 +1,13 @@
-export interface NamedEntity {
-    name: string;
-}
-
-export interface Diagnosis extends NamedEntity {
+export interface Diagnosis {
     id: number;
+    name: string;
     code: string;
     latin?: string;
 }
 
-export interface Patient extends NamedEntity {
+export interface Patient {
     id: string;
+    name: string;
     dateOfBirth: string;
     ssn: string;
     gender: string;

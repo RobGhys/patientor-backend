@@ -1,5 +1,6 @@
 import patients from '../../data/patients';
 import {NewPatient, Patient, PatientsWithoutSsn,} from "../types";
+const { v4: uuidv4 } = require('uuid');
 
 const getPatients = (): Array<Patient> => {
     return patients;
@@ -17,9 +18,10 @@ const getPatientsWithoutSsn = (): PatientsWithoutSsn[] => {
 };
 
 const addPatient = ( patient: NewPatient ) : Patient => {
+    let id = uuidv4();
     // Create a specific id, and take a copy of entry for other parameters
     const newPatient = {
-        id: Math.floor(Math.random() * (999999 - 1 + 1)) + 1,
+        id: id,
         ...patient
     }
 

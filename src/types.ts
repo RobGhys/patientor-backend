@@ -18,3 +18,5 @@ export type PlainEnglishDiagnosis = Omit<Diagnosis, 'latin'>;
 export type NewDiagnosis = Omit<Diagnosis, 'id'>;
 
 export type NewPatient = Omit<Patient, 'id'>;
+
+export type PatientsWithoutSsn = Omit<Patient, 'ssn'>;

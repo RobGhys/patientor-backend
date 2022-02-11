@@ -9,7 +9,7 @@ import { toNewPatient } from '../utils';
  *          GET         *
  ************************/
 router.get('/', (_req, res) => {
-    res.send(patientService.getPatients());
+    res.send(patientService.getPatientsWithoutSsn());
 });
 
 router.get('/:id', (req, res) => {

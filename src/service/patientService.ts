@@ -1,8 +1,19 @@
 import patients from '../../data/patients';
-import { NewPatient, Patient } from "../types";
+import {NewPatient, Patient, PatientsWithoutSsn,} from "../types";
 
 const getPatients = (): Array<Patient> => {
     return patients;
+};
+
+const getPatientsWithoutSsn = (): PatientsWithoutSsn[] => {
+    // Specifically exclude the unwanted fields
+    return patients.map(({ id, dateOfBirth, name, gender, occupation}) => ({
+        id,
+        dateOfBirth,
+        name,
+        gender,
+        occupation
+    }));
 };
 
 const addPatient = ( patient: NewPatient ) : Patient => {
@@ -26,5 +37,6 @@ const findById = (id: number): Patient | undefined => {
 export default {
     getPatients,
     addPatient,
-    findById
+    findById,
+    getPatientsWithoutSsn
 }

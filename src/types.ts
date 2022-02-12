@@ -1,6 +1,7 @@
 export enum Genre {
-    Man = 'man',
-    Woman = 'woman',
+    Male = 'male',
+    Female = 'female',
+    Other = 'other'
 }
 
 export interface Diagnosis {
